@@ -1,0 +1,58 @@
+- id: '1747856182462'
+  name: Cucina ON
+  entities:
+    light.lampada_cucina_1:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 187
+      friendly_name: Lampada Cucina 1
+      supported_features: 0
+      state: 'on'
+    light.lampada_cucina_2:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 190
+      friendly_name: Lampada cucina 2
+      supported_features: 0
+      state: 'on'
+    light.lampada_cucina_3:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 185
+      friendly_name: Lampada cucina 3
+      supported_features: 0
+      state: 'on'
+  icon: mdi:lightbulb-group
+  metadata: {}
+- id: '1747856469645'
+  name: Cucina SOFT
+  entities:
+    light.lampada_cucina_1:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 36
+      friendly_name: Lampada Cucina 1
+      supported_features: 0
+      state: 'on'
+    light.lampada_cucina_2:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 31
+      friendly_name: Lampada cucina 2
+      supported_features: 0
+      state: 'on'
+    light.lampada_cucina_3:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 36
+      friendly_name: Lampada cucina 3
+      supported_features: 0
+      state: 'on'
+  icon: mdi:lightbulb-on-30
+  metadata: {}

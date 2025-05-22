@@ -1,0 +1,207 @@
+- id: '1746953938361'
+  alias: Bottone 6 Luci Lara Ufficio
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - event.lumi_de_lumi_158d000403b480_v2_click_e_2_1
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      device_id: 77dd44fdf1aae60682222da6914894c8
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 3
+      - 169
+      - 244
+    target:
+      device_id: 693175add6267a4bc72544bc61808407
+  mode: single
+- id: '1747168244245'
+  alias: DEBUG - Sensore Movimento Notifica
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - event.lumi_de_lumi_158d0003e7dc91_v2_motion_detected_e_2_1
+  conditions: []
+  actions:
+  - action: script.notifica_pixel7
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1747412528613'
+  alias: DEBUG 2MQTT
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 3cfeeb9367cc58edbe5aff2b9a1859f1
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_on
+    device_id: 06571d0f5b24e186ec2b522d9cee2a03
+    entity_id: 2044f2b46dce1f70909cfdb331198a76
+    domain: light
+    brightness_pct: 80
+    flash: short
+  mode: single
+- id: '1747553284515'
+  alias: Salotto SOFT
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 2_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.plafoniera_2_soft
+  mode: single
+- id: '1747855983581'
+  alias: Cucina ON
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 1_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.cucina_soft
+  mode: single
+- id: '1747856521075'
+  alias: Cucina SOFT
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 1_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.cucina_soft_3
+  mode: single
+- id: '1747856751113'
+  alias: Cucina Salotto OFF
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 4_single
+    trigger: device
+  conditions: []
+  actions:
+  - type: turn_off
+    device_id: 06571d0f5b24e186ec2b522d9cee2a03
+    entity_id: 2044f2b46dce1f70909cfdb331198a76
+    domain: light
+  - type: turn_off
+    device_id: 866e5baf78c7c294a7a31c873dd0e15f
+    entity_id: 16c4d9f7eb4872be1120d3066ea693fe
+    domain: light
+  - type: turn_off
+    device_id: 0ddbc3ce543b4d10f5de763fbd7ba9b8
+    entity_id: 7ed3f15ab7b275bebb4ba8953447e77b
+    domain: light
+  - type: turn_off
+    device_id: d94345ff8182cead99d61a0a68ead809
+    entity_id: 0ce2bd7c3f6ce83822221dd50c5bee73
+    domain: light
+  mode: single
+- id: '1747857413022'
+  alias: Salotto ON
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 2_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.plafoniera_1_on
+  mode: single
+- id: '1747857873749'
+  alias: Cucina Salotto SOFT
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 3_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - scene.cucina_soft_3
+      - scene.plafoniera_2_soft
+  mode: single
+- id: '1747857932223'
+  alias: Cucina Salotto SOFT
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 3_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - scene.plafoniera_1_on
+      - scene.cucina_soft
+  mode: single
+- id: '1747934947992'
+  alias: Soft Test 6
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 1_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.cucina_soft
+  mode: single
