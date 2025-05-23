@@ -2,9 +2,11 @@
   alias: Bottone 6 Luci Lara Ufficio
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - event.lumi_de_lumi_158d000403b480_v2_click_e_2_1
+  - domain: mqtt
+    device_id: 186294746fdfdf7e209d32313162b12c
+    type: action
+    subtype: single
+    trigger: device
   conditions: []
   actions:
   - action: switch.toggle
@@ -126,7 +128,8 @@
     metadata: {}
     data: {}
     target:
-      entity_id: light.luci_cucina_loc
+      entity_id:
+      - light.cucina
   mode: single
 - id: '1747857413022'
   alias: Salotto ON
@@ -197,4 +200,99 @@
       entity_id:
       - scene.plafoniera_1_on
       - scene.cucina_soft
+  mode: single
+- id: '1748030340117'
+  alias: PC Ufficio
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 16b9c306cafb5c328c002362ff59afee
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.multipla_ufficio_presa_2
+  mode: single
+- id: '1748030985495'
+  alias: Apri Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 5_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  mode: single
+- id: '1748031184124'
+  alias: Chiudi Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 6_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  mode: single
+- id: '1748031315148'
+  alias: Ferma Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 5_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  mode: single
+- id: '1748031424597'
+  alias: Socchiudi Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 6_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 7
+      milliseconds: 0
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_cucina_balcone_loc
   mode: single
