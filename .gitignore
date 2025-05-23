@@ -15,7 +15,6 @@ home-assistant*
 home-assistant*.*
 
 # Exclude components folder
-blueprints
 custom_components
 ha_xiaomi_home
 image
