@@ -1,13 +1,19 @@
+# Exclude those files from the ignoring category
 !*/
 !*.yaml
 !.gitignore
 
+# Exclude secrets.yaml since it's a sensitive file
 secrets.yaml
-tapo_control
-www
-tts
-zigbee2mqtt
-custom_components
-images
+
+# Exclude log files since they are heavy
 home-assistant*
 home-assistant*.*
+
+# Exclude components folder
+custom_components
+images
+tapo_control
+tts
+www
+zigbee2mqtt
