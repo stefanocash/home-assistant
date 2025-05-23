@@ -4,15 +4,21 @@
 !.gitignore
 
 # Exclude secrets.yaml since it's a sensitive file
+.HA_VERSION
+.ssh
+.storage
 secrets.yaml
+SERVICE_ACCOUNT.json
 
 # Exclude log files since they are heavy
 home-assistant*
 home-assistant*.*
 
 # Exclude components folder
+blueprints
 custom_components
-images
+ha_xiaomi_home
+image
 tapo_control
 tts
 www
