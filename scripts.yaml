@@ -1,0 +1,11 @@
+notifica_pixel7:
+  alias: Notifica Pixel7
+  use_blueprint:
+    path: homeassistant/confirmable_notification.yaml
+    input:
+      notify_device: b5187a0a7f7104b5288968c3d04e2fd0
+      title: Notification Title
+      message: Notification Messagge
+      confirm_text: Confirma
+      dismiss_text: Anulla
+  description: ''
