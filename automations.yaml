@@ -2,26 +2,25 @@
   alias: Bottone 6 Luci Lara Ufficio
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - event.lumi_de_lumi_158d000403b480_v2_click_e_2_1
+  - domain: mqtt
+    device_id: 186294746fdfdf7e209d32313162b12c
+    type: action
+    subtype: single
+    trigger: device
   conditions: []
   actions:
+  - type: toggle
+    device_id: f4136a99b5b52ce0657f50f628b2d00a
+    entity_id: 7da4ecd60d4782e58d4368911a29ae02
+    domain: light
   - action: switch.toggle
     metadata: {}
     data: {}
     target:
-      device_id: 77dd44fdf1aae60682222da6914894c8
-  - action: light.toggle
+      device_id: f34a586dbbc5890c3680c4062442bdf1
+  - action: script.notifica_pixel7
     metadata: {}
-    data:
-      brightness_pct: 100
-      rgb_color:
-      - 3
-      - 169
-      - 244
-    target:
-      device_id: 693175add6267a4bc72544bc61808407
+    data: {}
   mode: single
 - id: '1747168244245'
   alias: DEBUG - Sensore Movimento Notifica
@@ -126,7 +125,8 @@
     metadata: {}
     data: {}
     target:
-      entity_id: light.luci_cucina_loc
+      entity_id:
+      - light.cucina
   mode: single
 - id: '1747857413022'
   alias: Salotto ON
@@ -197,4 +197,199 @@
       entity_id:
       - scene.plafoniera_1_on
       - scene.cucina_soft
+  mode: single
+- id: '1748030340117'
+  alias: PC Ufficio
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 16b9c306cafb5c328c002362ff59afee
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.multipla_ufficio_presa_2
+  mode: single
+- id: '1748030985495'
+  alias: Apri Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 5_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.apri_tapparelle_salotto
+  mode: single
+- id: '1748031184124'
+  alias: Chiudi Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 6_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.chiudi_tapparelle_salotto
+  mode: single
+- id: '1748031315148'
+  alias: Ferma Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 5_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.stop_tapparelle_script
+  mode: single
+- id: '1748031424597'
+  alias: Socchiudi Tapparelle Salotto
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 6_double
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.socchiudi_tapparelle_salotto
+  mode: single
+- id: '1748164405856'
+  alias: PC Ufficio Vibrazione
+  description: ''
+  triggers:
+  - type: vibration
+    device_id: 5e7d0df44fe40a9a66dbc1415d292933
+    entity_id: 9b9a4880a82e8cd3a99e781b65cd8b5b
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - switch.multipla_ufficio_presa_2
+  mode: single
+- id: '1748168199416'
+  alias: DEBUG OPEN COVER CUCINA BALCONE
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 35b3771c6c9726e4dde63bda1529663e
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_cucina_balcone_loc
+  mode: single
+- id: '1748168268852'
+  alias: DEBUG CLOSE COVER CUCINA BALCONE
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 35b3771c6c9726e4dde63bda1529663e
+    type: action
+    subtype: double
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_cucina_balcone_loc
+  mode: single
+- id: '1748168552762'
+  alias: DEBUG STOP COVER CUCINA BALCONE
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c79c139cfb78355faa162430bfb4fc9e
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_cucina_balcone_loc
+  mode: single
+- id: '1748174396693'
+  alias: DEBUG with LIGHT
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 35b3771c6c9726e4dde63bda1529663e
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.debug_toggle_light_after
+  mode: single
+- id: '1748174644451'
+  alias: DEBUG Stop a running automation
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c79c139cfb78355faa162430bfb4fc9e
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.debug_toggle_light_after
   mode: single

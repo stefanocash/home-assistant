@@ -4,8 +4,93 @@ notifica_pixel7:
     path: homeassistant/confirmable_notification.yaml
     input:
       notify_device: b5187a0a7f7104b5288968c3d04e2fd0
-      title: Notification Title
-      message: Notification Messagge
-      confirm_text: Confirma
-      dismiss_text: Anulla
+      title: Lara Sveglia
+      message: Lara si è svegliata
+      confirm_text: Ricevuto
+      dismiss_text: Non rompore
   description: ''
+pixel7_lara_e_sveglia:
+  alias: Pixel7 - Lara è sveglia
+  use_blueprint:
+    path: homeassistant/confirmable_notification.yaml
+    input:
+      notify_device: b5187a0a7f7104b5288968c3d04e2fd0
+      title: Lara Sveglia
+      message: Lara si è svegliata
+      confirm_text: Ricevuto
+      dismiss_text: Non rompore
+  description: Notifica su smartphone che Lara è sveglia
+  icon: mdi:baby-face
+debug_toggle_light_after:
+  sequence:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - type: toggle
+    device_id: 693175add6267a4bc72544bc61808407
+    entity_id: 0d8421b7e146a8441f240d54bda12355
+    domain: light
+  alias: DEBUG / Toggle Light After
+  description: ''
+apri_tapparelle_salotto:
+  sequence:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  alias: Apri Tapparelle Salotto
+  description: ''
+  icon: mdi:roller-shade
+chiudi_tapparelle_salotto:
+  sequence:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  alias: Chiudi Tapparelle Salotto
+  description: ''
+  icon: mdi:roller-shade
+socchiudi_tapparelle_salotto:
+  sequence:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparelle_salotto_loc
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_cucina_loc
+  alias: Socchiudi Tapparelle Salotto
+  description: ''
+  icon: mdi:roller-shade
+stop_tapparelle_script:
+  sequence:
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.apri_tapparelle_salotto
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.chiudi_tapparelle_salotto
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.socchiudi_tapparelle_salotto
+  alias: Stop Tapparelle Script
+  description: ''
+  icon: mdi:roller-shade
