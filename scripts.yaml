@@ -91,6 +91,12 @@ stop_tapparelle_script:
     data: {}
     target:
       entity_id: script.socchiudi_tapparelle_salotto
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparelle_salotto_loc
   alias: Stop Tapparelle Script
   description: ''
   icon: mdi:roller-shade
