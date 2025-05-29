@@ -360,7 +360,7 @@
       - cover.tapparella_cucina_balcone_loc
   mode: single
 - id: '1748174396693'
-  alias: DEBUG with LIGHT
+  alias: B4 Toggle Led Scrivania
   description: ''
   triggers:
   - domain: mqtt
@@ -370,11 +370,10 @@
     trigger: device
   conditions: []
   actions:
-  - action: script.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: script.debug_toggle_light_after
+  - type: toggle
+    device_id: 693175add6267a4bc72544bc61808407
+    entity_id: 0d8421b7e146a8441f240d54bda12355
+    domain: light
   mode: single
 - id: '1748174644451'
   alias: DEBUG Stop a running automation

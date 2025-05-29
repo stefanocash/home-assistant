@@ -21,19 +21,6 @@ pixel7_lara_e_sveglia:
       dismiss_text: Non rompore
   description: Notifica su smartphone che Lara è sveglia
   icon: mdi:baby-face
-debug_toggle_light_after:
-  sequence:
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - type: toggle
-    device_id: 693175add6267a4bc72544bc61808407
-    entity_id: 0d8421b7e146a8441f240d54bda12355
-    domain: light
-  alias: DEBUG / Toggle Light After
-  description: ''
 apri_tapparelle_salotto:
   sequence:
   - action: cover.open_cover
