@@ -283,28 +283,6 @@
     target:
       entity_id: script.socchiudi_tapparelle_salotto
   mode: single
-- id: '1748164405856'
-  alias: PC Ufficio Vibrazione
-  description: ''
-  triggers:
-  - type: vibration
-    device_id: 5e7d0df44fe40a9a66dbc1415d292933
-    entity_id: 9b9a4880a82e8cd3a99e781b65cd8b5b
-    domain: binary_sensor
-    trigger: device
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 0
-  conditions: []
-  actions:
-  - action: switch.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - switch.multipla_ufficio_presa_2
-  mode: single
 - id: '1748168199416'
   alias: DEBUG OPEN COVER CUCINA BALCONE
   description: ''
@@ -391,4 +369,20 @@
     data: {}
     target:
       entity_id: script.debug_toggle_light_after
+  mode: single
+- id: '1748870976392'
+  alias: Toggle Lampada di Sale
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 89512d4cf1249440ae2fec02bbfa2a2d
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - type: toggle
+    device_id: bd0d54afc0b319f0959b3a848b09f6d3
+    entity_id: af8a4f0bfb5abd7847342179f71103c9
+    domain: switch
   mode: single

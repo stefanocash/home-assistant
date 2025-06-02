@@ -52,7 +52,7 @@ socchiudi_tapparelle_salotto:
       hours: 0
       minutes: 0
       seconds: 6
-      milliseconds: 0
+      milliseconds: 500
   - action: cover.stop_cover
     metadata: {}
     data: {}
@@ -84,6 +84,170 @@ stop_tapparelle_script:
     target:
       entity_id:
       - cover.tapparelle_salotto_loc
-  alias: Stop Tapparelle Script
+  alias: Stop Tapparelle Salotto Script
+  description: ''
+  icon: mdi:roller-shade
+apri_tapparelle_cucina:
+  sequence:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_cucina_loc
+  alias: Apri Tapparella Cucina
+  description: ''
+  icon: mdi:roller-shade
+chiudi_tapparella_cucina:
+  sequence:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_cucina_loc
+  alias: Chiudi Tapparella Cucina
+  description: ''
+  icon: mdi:roller-shade
+stop_tapparella_cucina:
+  sequence:
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.apri_tapparella_cucina
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.chiudi_tapparella_cucina
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_cucina_loc
+  alias: Stop Tapparella Cucina Script
+  description: ''
+  icon: mdi:roller-shade
+apri_tapparella_cucina_balcone:
+  sequence:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_cucina_balcone_loc
+  alias: Apri Tapparella Cucina Balcone
+  description: ''
+  icon: mdi:roller-shade
+chiudi_tapparella_cucina_balcone:
+  sequence:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_cucina_balcone_loc
+  alias: Chiudi Tapparella Cucina Balcone
+  description: ''
+  icon: mdi:roller-shade
+stop_tapparella_cucina_balcone:
+  sequence:
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.apri_tapparella_cucina_balcone
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.chiudi_tapparella_cucina_balcone
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_cucina_balcone_loc
+  alias: Stop Tapparella Cucina Balcone Script
+  description: ''
+  icon: mdi:roller-shade
+apri_tapparella_cucina_salotto:
+  sequence:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_salotto_loc
+  alias: Apri Tapparella Salotto
+  description: ''
+  icon: mdi:roller-shade
+stop_tapparella_cucina_salotto:
+  sequence:
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.apri_tapparella_salotto
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.chiudi_tapparella_salotto
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_salotto_loc
+  alias: Stop Tapparella Salotto Script
+  description: ''
+  icon: mdi:roller-shade
+chiudi_tapparella_cucina_salotto:
+  sequence:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_salotto_loc
+  alias: Chiudi Tapparella Salotto
+  description: ''
+  icon: mdi:roller-shade
+chiudi_tapparella_camera:
+  sequence:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_camera_loc
+  alias: Chiudi Tapparella Camera
+  description: ''
+  icon: mdi:roller-shade
+apri_tapparella_camera:
+  sequence:
+  - action: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.tapparella_camera_loc
+  alias: Apri Tapparella Camera
+  description: ''
+  icon: mdi:roller-shade
+stop_tapparella_camera_script:
+  sequence:
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.apri_tapparella_camera
+  - action: script.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: script.chiudi_tapparella_camera
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.tapparella_camera_loc
+  alias: Stop Tapparella Camera Script
   description: ''
   icon: mdi:roller-shade
