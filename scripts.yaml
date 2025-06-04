@@ -251,3 +251,12 @@ stop_tapparella_camera_script:
   alias: Stop Tapparella Camera Script
   description: ''
   icon: mdi:roller-shade
+apri_cancello:
+  sequence:
+  - type: toggle
+    device_id: c9f08721abbc5273c10fd6fc15648229
+    entity_id: 965f0ef90bda87316bed224762a0bffe
+    domain: switch
+  alias: Apri Cancello
+  description: 'Usa il fingerbot sul citofono per aprire il cancello di casa '
+  icon: mdi:gate
