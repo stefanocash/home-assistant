@@ -299,22 +299,63 @@
     entity_id: 0d8421b7e146a8441f240d54bda12355
     domain: light
   mode: single
-- id: '1748174644451'
-  alias: DEBUG Stop a running automation
+- id: '1748977663287'
+  alias: Auto Led Scrivania On
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id: binary_sensor.presenza_2_occupancy
+    from: 'off'
+    to: 'on'
+  conditions:
+  - condition: sun
+    after: sunset
+    before: sunrise
+  actions:
+  - alias: Turn on the light
+    action: light.turn_on
+    target:
+      device_id: 693175add6267a4bc72544bc61808407
+    data: {}
+  - alias: Wait until there is no motion from device
+    wait_for_trigger:
+      trigger: state
+      entity_id: binary_sensor.presenza_2_occupancy
+      from: 'on'
+      to: 'off'
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 45
+      milliseconds: 0
+  - alias: Wait the number of seconds that has been set
+    delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - alias: Turn off the light
+    action: light.turn_off
+    target:
+      device_id: 693175add6267a4bc72544bc61808407
+    data: {}
+  mode: restart
+  max_exceeded: silent
+- id: '1749019186198'
+  alias: B3 Toggle Lampada Sale
   description: ''
   triggers:
   - domain: mqtt
-    device_id: c79c139cfb78355faa162430bfb4fc9e
+    device_id: 89512d4cf1249440ae2fec02bbfa2a2d
     type: action
     subtype: single
     trigger: device
   conditions: []
   actions:
-  - action: script.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id: script.debug_toggle_light_after
+  - type: toggle
+    device_id: bd0d54afc0b319f0959b3a848b09f6d3
+    entity_id: af8a4f0bfb5abd7847342179f71103c9
+    domain: switch
   mode: single
 - id: '1748870976392'
   alias: Toggle Lampada di Sale
