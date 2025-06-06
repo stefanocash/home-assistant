@@ -77,7 +77,8 @@
     metadata: {}
     data: {}
     target:
-      entity_id: scene.cucina_soft
+      entity_id:
+      - scene.cucina_2
   mode: single
 - id: '1747856521075'
   alias: Cucina SOFT
@@ -99,7 +100,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: scene.cucina_soft_3
+      entity_id: scene.cucina
   mode: single
 - id: '1747856751113'
   alias: Cucina Salotto OFF
@@ -171,8 +172,8 @@
     data: {}
     target:
       entity_id:
-      - scene.cucina_soft_3
       - scene.plafoniera_2_soft
+      - scene.cucina
   mode: single
 - id: '1747857932223'
   alias: Cucina Salotto ON
@@ -196,7 +197,7 @@
     target:
       entity_id:
       - scene.plafoniera_1_on
-      - scene.cucina_soft
+      - scene.cucina_2
   mode: single
 - id: '1748030340117'
   alias: PC Ufficio
@@ -341,22 +342,6 @@
     data: {}
   mode: restart
   max_exceeded: silent
-- id: '1749019186198'
-  alias: B3 Toggle Lampada Sale
-  description: ''
-  triggers:
-  - domain: mqtt
-    device_id: 89512d4cf1249440ae2fec02bbfa2a2d
-    type: action
-    subtype: single
-    trigger: device
-  conditions: []
-  actions:
-  - type: toggle
-    device_id: bd0d54afc0b319f0959b3a848b09f6d3
-    entity_id: af8a4f0bfb5abd7847342179f71103c9
-    domain: switch
-  mode: single
 - id: '1748870976392'
   alias: Toggle Lampada di Sale
   description: ''
@@ -372,4 +357,133 @@
     device_id: bd0d54afc0b319f0959b3a848b09f6d3
     entity_id: af8a4f0bfb5abd7847342179f71103c9
     domain: switch
+  mode: single
+- id: '1749152759795'
+  alias: Spegne le luci in cucina e salotto verificandone lo stato spento
+  description: Spegne una luce alla volta verificandone lo spegnimento e riprova fino
+    a 5 volte in caso di fallimento.
+  triggers:
+  - domain: mqtt
+    device_id: 18330b40555369a68cdd1a63558cdcf9
+    type: action
+    subtype: 4_single
+    trigger: device
+  - domain: mqtt
+    device_id: 207c934d7aa4024d28036fd43ff989f9
+    type: action
+    subtype: 4_single
+    trigger: device
+  conditions: []
+  actions:
+  - target:
+      entity_id: light.lampada_cucina_1
+    action: light.turn_off
+    data: {}
+  - repeat:
+      count: 5
+      sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: light.lampada_cucina_1
+            state: 'off'
+          sequence:
+          - stop: La luce è stata spenta con successo.
+        default:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 1
+            milliseconds: 0
+        - type: turn_off
+          device_id: 866e5baf78c7c294a7a31c873dd0e15f
+          entity_id: 16c4d9f7eb4872be1120d3066ea693fe
+          domain: light
+  - target:
+      entity_id: light.lampada_cucina_2
+    action: light.turn_off
+    data: {}
+  - repeat:
+      count: 5
+      sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: light.lampada_cucina_2
+            state: 'off'
+          sequence:
+          - stop: La luce è stata spenta con successo.
+        default:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 1
+            milliseconds: 0
+        - type: turn_off
+          device_id: 866e5baf78c7c294a7a31c873dd0e15f
+          entity_id: 16c4d9f7eb4872be1120d3066ea693fe
+          domain: light
+  - target:
+      entity_id: light.lampada_cucina_3
+    action: light.turn_off
+    data: {}
+  - repeat:
+      count: 5
+      sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: light.lampada_cucina_3
+            state: 'off'
+          sequence:
+          - stop: La luce 3 è stata spenta con successo.
+        default:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 1
+            milliseconds: 0
+        - type: turn_off
+          device_id: 866e5baf78c7c294a7a31c873dd0e15f
+          entity_id: 16c4d9f7eb4872be1120d3066ea693fe
+          domain: light
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.lampada_cucina_1
+        state: 'off'
+      sequence:
+      - action: system_log.write
+        metadata: {}
+        data:
+          level: info
+          message: 'Automazione ''Spegni Luce con Retry'': Luce 1 spenta con successo
+            dopo uno o più tentativi'
+          logger: DEBUG
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.lampada_cucina_2
+        state: 'off'
+      sequence:
+      - action: system_log.write
+        metadata: {}
+        data:
+          level: info
+          message: 'Automazione ''Spegni Luce con Retry'': Luce 2 spenta con successo
+            dopo uno o più tentativi'
+          logger: DEBUG
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: light.lampada_cucina_3
+        state: 'off'
+      sequence:
+      - action: system_log.write
+        metadata: {}
+        data:
+          level: info
+          message: 'Automazione ''Spegni Luce con Retry'': Luce 3 spenta con successo
+            dopo uno o più tentativi'
+          logger: DEBUG
   mode: single
