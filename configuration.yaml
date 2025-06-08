@@ -13,3 +13,7 @@ frontend:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+sensor:
+  - platform: raccolta_rifiuti
+    calendar_entity_id: calendar.raccolta_rifiuti

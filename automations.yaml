@@ -1,5 +1,5 @@
 - id: '1746953938361'
-  alias: Bottone 6 Luci Lara Ufficio
+  alias: B6 Luci Lara Ufficio
   description: ''
   triggers:
   - domain: mqtt
@@ -10,8 +10,8 @@
   conditions: []
   actions:
   - type: toggle
-    device_id: f4136a99b5b52ce0657f50f628b2d00a
-    entity_id: 7da4ecd60d4782e58d4368911a29ae02
+    device_id: 693175add6267a4bc72544bc61808407
+    entity_id: 0d8421b7e146a8441f240d54bda12355
     domain: light
   - action: switch.toggle
     metadata: {}
@@ -36,7 +36,7 @@
     data: {}
   mode: single
 - id: '1747553284515'
-  alias: Salotto SOFT
+  alias: B2 Salotto SOFT
   description: ''
   triggers:
   - domain: mqtt
@@ -58,7 +58,7 @@
       entity_id: scene.plafoniera_2_soft
   mode: single
 - id: '1747855983581'
-  alias: Cucina ON
+  alias: B1 Cucina ON
   description: ''
   triggers:
   - domain: mqtt
@@ -73,15 +73,12 @@
     trigger: device
   conditions: []
   actions:
-  - action: scene.turn_on
+  - action: script.luci_cucina_on
     metadata: {}
     data: {}
-    target:
-      entity_id:
-      - scene.cucina_2
   mode: single
 - id: '1747856521075'
-  alias: Cucina SOFT
+  alias: B1 Cucina SOFT
   description: ''
   triggers:
   - domain: mqtt
@@ -96,14 +93,12 @@
     trigger: device
   conditions: []
   actions:
-  - action: scene.turn_on
+  - action: script.luci_cucina_soft
     metadata: {}
     data: {}
-    target:
-      entity_id: scene.cucina
   mode: single
 - id: '1747856751113'
-  alias: Cucina Salotto OFF
+  alias: B4 Cucina Salotto OFF
   description: ''
   triggers:
   - domain: mqtt
@@ -118,19 +113,16 @@
     trigger: device
   conditions: []
   actions:
-  - type: turn_off
-    device_id: 06571d0f5b24e186ec2b522d9cee2a03
-    entity_id: 2044f2b46dce1f70909cfdb331198a76
-    domain: light
-  - action: light.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - light.cucina
+  - parallel:
+    - action: script.luci_cucina_off
+      metadata: {}
+      data: {}
+    - action: script.plafoniera_off
+      metadata: {}
+      data: {}
   mode: single
 - id: '1747857413022'
-  alias: Salotto ON
+  alias: B2 Salotto ON
   description: ''
   triggers:
   - domain: mqtt
@@ -152,7 +144,7 @@
       entity_id: scene.plafoniera_1_on
   mode: single
 - id: '1747857873749'
-  alias: Cucina Salotto SOFT
+  alias: B3 Cucina Salotto SOFT
   description: ''
   triggers:
   - domain: mqtt
@@ -167,16 +159,18 @@
     trigger: device
   conditions: []
   actions:
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - scene.plafoniera_2_soft
-      - scene.cucina
+  - sequence:
+    - action: script.luci_cucina_soft
+      metadata: {}
+      data: {}
+    - action: scene.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: scene.plafoniera_2_soft
   mode: single
 - id: '1747857932223'
-  alias: Cucina Salotto ON
+  alias: B3 Cucina Salotto ON
   description: ''
   triggers:
   - domain: mqtt
@@ -191,16 +185,18 @@
     trigger: device
   conditions: []
   actions:
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - scene.plafoniera_1_on
-      - scene.cucina_2
+  - parallel:
+    - action: script.luci_cucina_on
+      metadata: {}
+      data: {}
+    - action: scene.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: scene.plafoniera_1_on
   mode: single
 - id: '1748030340117'
-  alias: PC Ufficio
+  alias: B1 PC Ufficio
   description: ''
   triggers:
   - domain: mqtt
@@ -214,10 +210,11 @@
     metadata: {}
     data: {}
     target:
-      entity_id: switch.multipla_ufficio_presa_2
+      entity_id:
+      - switch.multipla_pc_monitor
   mode: single
 - id: '1748030985495'
-  alias: Apri Tapparelle Salotto
+  alias: B5 Apri Tapparelle Salotto
   description: ''
   triggers:
   - domain: mqtt
@@ -234,7 +231,7 @@
       entity_id: script.apri_tapparelle_salotto
   mode: single
 - id: '1748031184124'
-  alias: Chiudi Tapparelle Salotto
+  alias: B6 Chiudi Tapparelle Salotto
   description: ''
   triggers:
   - domain: mqtt
@@ -251,7 +248,7 @@
       entity_id: script.chiudi_tapparelle_salotto
   mode: single
 - id: '1748031315148'
-  alias: Ferma Tapparelle Salotto
+  alias: B5 Ferma Tapparelle Salotto
   description: ''
   triggers:
   - domain: mqtt
@@ -268,7 +265,7 @@
       entity_id: script.stop_tapparelle_script
   mode: single
 - id: '1748031424597'
-  alias: Socchiudi Tapparelle Salotto
+  alias: B6 Socchiudi Tapparelle Salotto
   description: ''
   triggers:
   - domain: mqtt
@@ -354,8 +351,8 @@
   conditions: []
   actions:
   - type: toggle
-    device_id: bd0d54afc0b319f0959b3a848b09f6d3
-    entity_id: af8a4f0bfb5abd7847342179f71103c9
+    device_id: af670d26ccd89193aa9cd66ea48e033f
+    entity_id: 336b7e5f2c15a289eaa64c9706c901c2
     domain: switch
   mode: single
 - id: '1749152759795'
@@ -376,7 +373,7 @@
   conditions: []
   actions:
   - target:
-      entity_id: light.lampada_cucina_1
+      entity_id: light.luce_cucina_1
     action: light.turn_off
     data: {}
   - repeat:
@@ -385,7 +382,7 @@
       - choose:
         - conditions:
           - condition: state
-            entity_id: light.lampada_cucina_1
+            entity_id: light.luce_cucina_1
             state: 'off'
           sequence:
           - stop: La luce è stata spenta con successo.
@@ -400,7 +397,7 @@
           entity_id: 16c4d9f7eb4872be1120d3066ea693fe
           domain: light
   - target:
-      entity_id: light.lampada_cucina_2
+      entity_id: light.luce_cucina_2
     action: light.turn_off
     data: {}
   - repeat:
@@ -409,7 +406,7 @@
       - choose:
         - conditions:
           - condition: state
-            entity_id: light.lampada_cucina_2
+            entity_id: light.luce_cucina_2
             state: 'off'
           sequence:
           - stop: La luce è stata spenta con successo.
@@ -424,7 +421,7 @@
           entity_id: 16c4d9f7eb4872be1120d3066ea693fe
           domain: light
   - target:
-      entity_id: light.lampada_cucina_3
+      entity_id: light.luce_cucina_3
     action: light.turn_off
     data: {}
   - repeat:
@@ -433,7 +430,7 @@
       - choose:
         - conditions:
           - condition: state
-            entity_id: light.lampada_cucina_3
+            entity_id: light.luce_cucina_3
             state: 'off'
           sequence:
           - stop: La luce 3 è stata spenta con successo.
@@ -450,7 +447,7 @@
   - choose:
     - conditions:
       - condition: state
-        entity_id: light.lampada_cucina_1
+        entity_id: light.luce_cucina_1
         state: 'off'
       sequence:
       - action: system_log.write
@@ -463,7 +460,7 @@
   - choose:
     - conditions:
       - condition: state
-        entity_id: light.lampada_cucina_2
+        entity_id: light.luce_cucina_2
         state: 'off'
       sequence:
       - action: system_log.write
@@ -476,7 +473,7 @@
   - choose:
     - conditions:
       - condition: state
-        entity_id: light.lampada_cucina_3
+        entity_id: light.luce_cucina_3
         state: 'off'
       sequence:
       - action: system_log.write

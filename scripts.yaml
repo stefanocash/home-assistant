@@ -27,7 +27,7 @@ apri_tapparelle_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparelle_salotto_loc
+      entity_id: cover.tapparelle_salotto
   alias: Apri Tapparelle Salotto
   description: ''
   icon: mdi:roller-shade
@@ -37,7 +37,7 @@ chiudi_tapparelle_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparelle_salotto_loc
+      entity_id: cover.tapparelle_salotto
   alias: Chiudi Tapparelle Salotto
   description: ''
   icon: mdi:roller-shade
@@ -47,7 +47,7 @@ socchiudi_tapparelle_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparelle_salotto_loc
+      entity_id: cover.tapparelle_salotto
   - delay:
       hours: 0
       minutes: 0
@@ -57,7 +57,8 @@ socchiudi_tapparelle_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_cucina_loc
+      entity_id:
+      - cover.tapparella_cucina
   alias: Socchiudi Tapparelle Salotto
   description: ''
   icon: mdi:roller-shade
@@ -82,8 +83,10 @@ stop_tapparelle_script:
     metadata: {}
     data: {}
     target:
-      entity_id:
-      - cover.tapparelle_salotto_loc
+      area_id:
+      - salotto
+      - cucina
+      - balcone
   alias: Stop Tapparelle Salotto Script
   description: ''
   icon: mdi:roller-shade
@@ -93,7 +96,8 @@ apri_tapparelle_cucina:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_cucina_loc
+      entity_id:
+      - cover.tapparella_cucina
   alias: Apri Tapparella Cucina
   description: ''
   icon: mdi:roller-shade
@@ -103,7 +107,8 @@ chiudi_tapparella_cucina:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_cucina_loc
+      entity_id:
+      - cover.tapparella_cucina
   alias: Chiudi Tapparella Cucina
   description: ''
   icon: mdi:roller-shade
@@ -123,8 +128,7 @@ stop_tapparella_cucina:
     metadata: {}
     data: {}
     target:
-      entity_id:
-      - cover.tapparella_cucina_loc
+      area_id: cucina
   alias: Stop Tapparella Cucina Script
   description: ''
   icon: mdi:roller-shade
@@ -134,7 +138,8 @@ apri_tapparella_cucina_balcone:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_cucina_balcone_loc
+      entity_id:
+      - cover.tapparella_balcone
   alias: Apri Tapparella Cucina Balcone
   description: ''
   icon: mdi:roller-shade
@@ -144,7 +149,8 @@ chiudi_tapparella_cucina_balcone:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_cucina_balcone_loc
+      entity_id:
+      - cover.tapparella_balcone
   alias: Chiudi Tapparella Cucina Balcone
   description: ''
   icon: mdi:roller-shade
@@ -164,8 +170,7 @@ stop_tapparella_cucina_balcone:
     metadata: {}
     data: {}
     target:
-      entity_id:
-      - cover.tapparella_cucina_balcone_loc
+      area_id: balcone
   alias: Stop Tapparella Cucina Balcone Script
   description: ''
   icon: mdi:roller-shade
@@ -175,7 +180,8 @@ apri_tapparella_cucina_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_salotto_loc
+      entity_id:
+      - cover.tapparella_salotto_salotto_loc
   alias: Apri Tapparella Salotto
   description: ''
   icon: mdi:roller-shade
@@ -195,8 +201,7 @@ stop_tapparella_cucina_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id:
-      - cover.tapparella_salotto_loc
+      area_id: salotto
   alias: Stop Tapparella Salotto Script
   description: ''
   icon: mdi:roller-shade
@@ -206,7 +211,8 @@ chiudi_tapparella_cucina_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_salotto_loc
+      entity_id:
+      - cover.tapparella_salotto_salotto_loc
   alias: Chiudi Tapparella Salotto
   description: ''
   icon: mdi:roller-shade
@@ -216,7 +222,8 @@ chiudi_tapparella_camera:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_camera_loc
+      entity_id:
+      - cover.tapparella_camera
   alias: Chiudi Tapparella Camera
   description: ''
   icon: mdi:roller-shade
@@ -226,7 +233,7 @@ apri_tapparella_camera:
     metadata: {}
     data: {}
     target:
-      entity_id: cover.tapparella_camera_loc
+      area_id: camera_da_letto
   alias: Apri Tapparella Camera
   description: ''
   icon: mdi:roller-shade
@@ -246,8 +253,7 @@ stop_tapparella_camera_script:
     metadata: {}
     data: {}
     target:
-      entity_id:
-      - cover.tapparella_camera_loc
+      area_id: camera_da_letto
   alias: Stop Tapparella Camera Script
   description: ''
   icon: mdi:roller-shade
@@ -260,3 +266,63 @@ apri_cancello:
   alias: Apri Cancello
   description: 'Usa il fingerbot sul citofono per aprire il cancello di casa '
   icon: mdi:gate
+luci_cucina_on:
+  sequence:
+  - action: light.turn_on
+    target:
+      entity_id: light.luci_cucina_loc
+    data:
+      brightness_pct: 80
+  alias: Luci Cucina ON
+  description: ''
+luci_cucina_soft:
+  sequence:
+  - action: light.turn_on
+    target:
+      entity_id: light.luci_cucina_loc
+    data:
+      brightness_pct: 20
+  alias: Luci Cucina SOFT
+  description: ''
+luci_cucina_off:
+  sequence:
+  - action: light.turn_off
+    target:
+      entity_id:
+      - light.luci_cucina_loc
+    data: {}
+  alias: Luci Cucina OFF
+  description: ''
+plafoniera_off:
+  sequence:
+  - action: light.turn_off
+    target:
+      entity_id:
+      - light.plafoniera_2
+    data: {}
+  alias: Plafoniera OFF
+  description: ''
+led_lara_dorme:
+  sequence:
+  - action: light.turn_on
+    data:
+      color_name: red
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.led_piano_0_2
+  alias: LED Lara Dorme
+  description: ''
+  icon: mdi:sleep
+led_lara_sveglia:
+  sequence:
+  - action: light.turn_on
+    data:
+      color_name: green
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.led_piano_0_2
+  alias: LED Lara Sveglia
+  description: ''
+  icon: mdi:baby-face-outline
