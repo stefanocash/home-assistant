@@ -118,7 +118,8 @@ stop_tapparella_cucina:
     metadata: {}
     data: {}
     target:
-      entity_id: script.apri_tapparella_cucina
+      entity_id:
+      - script.apri_tapparella_cucina
   - action: script.turn_off
     metadata: {}
     data: {}
@@ -191,12 +192,14 @@ stop_tapparella_cucina_salotto:
     metadata: {}
     data: {}
     target:
-      entity_id: script.apri_tapparella_salotto
+      entity_id:
+      - script.apri_tapparella_cucina_salotto
   - action: script.turn_off
     metadata: {}
     data: {}
     target:
-      entity_id: script.chiudi_tapparella_salotto
+      entity_id:
+      - script.chiudi_tapparella_cucina_salotto
   - action: cover.stop_cover
     metadata: {}
     data: {}
