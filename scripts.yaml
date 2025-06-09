@@ -181,7 +181,7 @@ apri_tapparella_cucina_salotto:
     data: {}
     target:
       entity_id:
-      - cover.tapparella_salotto_salotto_loc
+      - cover.tapparella_salotto
   alias: Apri Tapparella Salotto
   description: ''
   icon: mdi:roller-shade
@@ -212,7 +212,7 @@ chiudi_tapparella_cucina_salotto:
     data: {}
     target:
       entity_id:
-      - cover.tapparella_salotto_salotto_loc
+      - cover.tapparella_salotto
   alias: Chiudi Tapparella Salotto
   description: ''
   icon: mdi:roller-shade

@@ -22,19 +22,6 @@
     metadata: {}
     data: {}
   mode: single
-- id: '1747168244245'
-  alias: DEBUG - Sensore Movimento Notifica
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - event.lumi_de_lumi_158d0003e7dc91_v2_motion_detected_e_2_1
-  conditions: []
-  actions:
-  - action: script.notifica_pixel7
-    metadata: {}
-    data: {}
-  mode: single
 - id: '1747553284515'
   alias: B2 Salotto SOFT
   description: ''
